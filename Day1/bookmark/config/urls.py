@@ -67,6 +67,6 @@ urlpatterns = [
     # path('blog/', blog_list),
     # path('blog/<int:num>/', blog),
     # path('language/<str:lang>/', language),
-    # path('movie/', movies),
-    # path('movie/<int:index>/', movie_detail),
+    path('movie/', movies),
+    path('movie/<int:index>/', movie_detail),
 ]
