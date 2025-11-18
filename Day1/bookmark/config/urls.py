@@ -63,8 +63,8 @@ def movie_detail(request, index):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    # path('todo/', blog_list),
-    # path('todo/<int:num>/', todo),
+    # path('blog/', blog_list),
+    # path('blog/<int:num>/', blog),
     # path('language/<str:lang>/', language),
     path('movie/', movies),
     path('movie/<int:index>/', movie_detail),
