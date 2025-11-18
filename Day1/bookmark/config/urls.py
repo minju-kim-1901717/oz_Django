@@ -12,7 +12,7 @@ Class-based views
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+    2. Add a URL to urlpatterns:  path('todo/', include('todo.urls'))
 """
 from django.contrib import admin
 from django.http import HttpResponse, Http404
@@ -63,8 +63,8 @@ def movie_detail(request, index):
 urlpatterns = [
     # path('admin/', admin.site.urls),
     # path('', index),
-    # path('blog/', blog_list),
-    # path('blog/<int:num>/', blog),
+    # path('todo/', blog_list),
+    # path('todo/<int:num>/', todo),
     # path('language/<str:lang>/', language),
     path('movie/', movies),
     path('movie/<int:index>/', movie_detail),
