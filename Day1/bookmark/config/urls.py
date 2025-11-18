@@ -61,8 +61,8 @@ def movie_detail(request, index):
     return render(request, 'movie_detail.html', {'movie': movies})
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    # path('', index),
+    path('admin/', admin.site.urls),
+    path('', index),
     # path('todo/', blog_list),
     # path('todo/<int:num>/', todo),
     # path('language/<str:lang>/', language),
