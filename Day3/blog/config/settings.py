@@ -41,7 +41,7 @@ DJANGO_APPS = [
 ]
 
 OWNER_APPS = [
-    'todo',
+    'blog',
     'user',
 ]
 

@@ -26,5 +26,5 @@ def blog_list(request):
 
 def blog_detail(request, pk):
     blog = get_object_or_404(Blog, pk=pk)
-    context = {'todo':blog}
+    context = {'blog':blog}
     return render(request, 'blog_detail.html',context)
