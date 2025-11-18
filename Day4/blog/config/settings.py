@@ -41,8 +41,8 @@ DJANGO_APPS = [
 ]
 
 OWNER_APPS = [
-    'todo',
-    'user',
+    'blog',
+    'member',
 ]
 
 THIRD_PARTY_APPS = [

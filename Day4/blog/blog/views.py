@@ -49,7 +49,7 @@ def blog_list(request):
 
 def blog_detail(request, pk):
     blog = get_object_or_404(Blog, pk=pk)
-    context = {'todo':blog}
+    context = {'blog':blog}
     return render(request, 'blog_detail.html',context)
 
 @login_required()
@@ -75,7 +75,7 @@ def blog_update(request, pk):
         return redirect(reverse('blog_detail', kwargs={'pk':blog.pk}))
 
     context = {
-        'todo':blog,
+        'blog':blog,
         'form':form,
     }
     return render(request,'blog_update.html',context)
