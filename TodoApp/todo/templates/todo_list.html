@@ -2,17 +2,17 @@
 {% block content %}
     <h1>Todo List</h1>
     <div>
-        <p>방문자 : {{ count }}</p>
+<!--        <p>방문자 : {{ count }}</p>-->
         <p style="text-align: right">
-            <a href="{% url 'todo_create' %}">새 게시글</a>
+            <a href="{% url 'todo:create' %}">새 게시글</a>
         </p>
     </div>
 
 {#타이틀#}
     {% for todo in page_obj %}
         <p>
-            <a href="{% url 'todo_detail' todo.pk %}">
-                ({{ todo.id }}) {{ todo.title }} <small>({{ todo.author.username }})</small>- {{ todo.created | date:"Y-m-d" }}
+            <a href="{% url 'todo:detail' todo.pk %}">
+                [{{ todo.get_category_display }}] {{ todo.title }} <small>({{ todo.author.username }})</small>- {{ todo.created | date:"Y-m-d" }}
             </a>
         </p>
     {% endfor %}

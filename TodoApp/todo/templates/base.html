@@ -11,7 +11,7 @@
 <body>
     <nav style="display: flex; justify-content: space-between">
         <div>
-            <a href="{% url 'todo_list' %}">Home</a>
+            <a href="{% url 'todo:list' %}">Home</a>
         </div>
         <div style="text-align: right">
             {% if request.user.is_authenticated %}
@@ -27,5 +27,8 @@
         </div>
     </nav>
     {% block content %}  {% endblock %}
+
+    {% block js %}  {% endblock %}
 </body>
 </html>
+
