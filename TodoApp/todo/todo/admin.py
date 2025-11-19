@@ -5,4 +5,4 @@ from todo.models import Todo
 
 @admin.register(Todo)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('category', 'title', 'detail')
+    ...

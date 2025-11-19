@@ -18,18 +18,17 @@ from xml.etree.ElementInclude import include
 
 from django.contrib import admin
 from django.urls import path,include
-from todo import views, cb_views
+from todo import views
 from user import views as member_views
-
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    #CBV
-    path('', include('todo.urls')),
-    #FBV
-    path('fb/', include('todo.fbv_urls')),
+    path('', views.todo_list, name='todo_list'),
+    path('<int:pk>/', views.todo_detail, name='todo_detail'),
+    path('create/', views.todo_create, name='todo_create'),
+    path('<int:pk>/update/', views.todo_update, name='todo_update'),
+    path('<int:pk>/delete/', views.todo_delete, name='todo_delete'),
 
     #### auth
     path('accounts/', include('django.contrib.auth.urls')),
