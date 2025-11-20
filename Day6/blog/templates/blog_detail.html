@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+{#    상단바 (홈/로그인)#}
+    <div class="mt-2 d-flex justify-content-between">
+        <h1>{{ blog.title }}</h1>
+        {% if request.user == blog.author or request.user.is_staff%}
+            <div>
+                <a class="btn btn-sm btn-warning" href="{% url 'blog:update' blog.pk %}">수정</a>
+                <form id ='delete_form' action="{% url 'blog:delete' blog.pk %}" method="post" style="display: inline">
+                    {% csrf_token %}
+                    <button class="btn btn-sm btn-danger" type="button" id="delete_btn">삭제</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+
+{#    콘텐츠 (유저네임/글 내용)#}
+    <div style="text-align: right">
+        {{ blog.author.username }}
+    </div>
+    <hr>
+    <p>{{ blog.content }}</p>
+    <hr>
+{#  댓글 작성#}
+    {% if request.user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <div class="text-end">
+                <button class="btn btn-sm btn-primary">작성</button>
+            </div>
+        </form>
+        <hr>
+    {% endif %}
+
+{#    댓글 보여주기#}
+    <div class="mb-2">
+    {% for comment in object_list %}
+        <div class="border-bottom">
+            {{ comment.content }}
+            <p class="text-end">
+                <small>{{ comment.created | date:"Y-m-d H:i" }} | {{ comment.author.username }}</small>
+            </p>
+        </div>
+
+    {% endfor %}
+    </div>
+    {#    댓글 페이지네이션#}
+    {% include 'pagination.html' %}
+
+
+    <a class="btn btn-sm btn-info" href="{% url 'blog:list' %}"> 목록</a>
+
+
+{% endblock %}
+
+{#js#}
+{% block js %}
+    <script>
+        document.querySelector('#delete_btn').addEventListener('click', function (){
+            if(confirm('삭제하시겠습니까')) {
+                document.querySelector('#delete_form').submit();
+            }
+        })
+    </script>
+{% endblock %}
